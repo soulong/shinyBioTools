@@ -13,3 +13,22 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/soulong/shinyBioTools
 BugReports: https://github.com/soulong/shinyBioTools/issues
+Imports: 
+    AnnotationHub,
+    dplyr,
+    limma,
+    stringr,
+    tibble,
+    IDPmisc,
+    Biostrings,
+    httr,
+    writexl,
+    readxl,
+    rvest,
+    xml2,
+    shinythemes
+Depends: 
+    magrittr,
+    shiny
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1

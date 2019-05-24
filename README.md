@@ -12,6 +12,11 @@ You can install the released version of shinyBioTools from [Github](https://gith
 ``` r
 install.packages("shinyBioTools")
 ```
+## Dependency
+
+```r
+devtools::install_github("soulong/AnnotationHub")
+```
 
 ## Example
 
