@@ -5,7 +5,8 @@ fluidPage(
     title="shinyBioTools",
 
     tabPanel(
-      title="real-time PCR"
+      title="Real-time PCR",
+      module_rtPCR_ui("rtPCR")
     ),
 
 

@@ -9,8 +9,10 @@ shRNA_primer <- function(splashRNA, vector)
   overlap_5 <- DNAString("TGCTGTTGACAGTGAGCG")
   overlap_3 <- DNAString("TGCCTACTGCCTCGGACT")
   multi_antisense_guide <- splashRNA$Antisense
+
   Primer <- c()
   Sequence <- c()
+  Construct <- list()
   for(i in 1:length(multi_antisense_guide))
   {
     antisense_guide <- DNAString(multi_antisense_guide[[i]])
@@ -23,13 +25,17 @@ shRNA_primer <- function(splashRNA, vector)
     primer_R <- as.character(reverseComplement(
       DNAString(str_c(overlap_5, sense_guide, loop))))
     id <- splashRNA$ID[i]
-    name_fa <- str_c(id, ".fa")
-    Biostrings::writeXStringSet(DNAStringSet(new_fullseq), name_fa)
+
     name_primer_f <- str_c(id, "-F")
     name_primer_r <- str_c(id, "-R")
     Primer <- c(Primer, name_primer_f, name_primer_r)
     Sequence <- c(Sequence, primer_F, primer_R)
+
+    # name_fa <- str_c(id, ".fa")
+    # Construct <- rlist::list.append(new_construct_all, DNAStringSet(new_fullseq), name_fa)
   }
-  primer <- data.frame(ID=Primer, Primer=Sequence, stringsAsFactors=FALSE)
-  return(primer)
+
+  Primer <- data.frame(ID=Primer, Primer=Sequence, stringsAsFactors=FALSE)
+
+  return(Primer)
 }

@@ -17,11 +17,12 @@ runshinyBioTools <- function(port=5001) {
   options(error=traceback)
 
   # mirE shRNA vector
-  shRNA_vector <<- Biostrings::readDNAStringSet("./data/pGIPZ-mirE-control.fa",  "fasta")[[1]]
+  shRNA_vector <- Biostrings::readDNAStringSet("./data/pGIPZ-mirE-control.fa",  "fasta")[[1]]
   #  system.file("data", "pGIPZ-mirE-control.fa", "shinyBioTools"),  "fasta")[[1]]
 
   # import module
-  # import modules
+  source("./module/module_rtPCR.R")
+  source("./module/module_rtPCR_ui.R")
   source("./module/module_shRNA.R")
   source("./module/module_shRNA_ui.R")
 

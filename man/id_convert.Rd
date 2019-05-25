@@ -5,7 +5,7 @@
 \title{id conversion}
 \usage{
 id_convert(genelist = NULL, fromType = "ensembl_gene_id",
-  species = "hs", alias = T)
+  species = "hs", alias = FALSE)
 }
 \arguments{
 \item{genelist}{a vector containing genes you want to convert from}

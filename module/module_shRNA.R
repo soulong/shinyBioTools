@@ -5,7 +5,7 @@ module_shRNA <- function(input, output, session, shRNA_vector) {
   shrna.geneinfo <- eventReactive(input$shrna.submit, {
     shrna.ids <- as.character(stringr::str_split(input$shrna.input, "\n", simplify=T))
     shrna.gene <- shinyBioTools::id_convert(shrna.ids, input$shrna.type,
-                                            input$shrna.species, input$shrna.alias) %>%
+                                            input$shrna.species) %>%   # discard input$shrna.alias
       dplyr::select(1:6)
     return(shrna.gene)
   })
@@ -46,8 +46,6 @@ module_shRNA <- function(input, output, session, shRNA_vector) {
     content=function(path) writexl::write_xlsx(list(antisense=splashRNA()$antisense, primer=splashRNA()$primer), path),
     contentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   )
-
-
 }
 
 

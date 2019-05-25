@@ -17,7 +17,7 @@
 id_convert <- function(genelist=NULL,
                        fromType="ensembl_gene_id",
                        species="hs",
-                       alias=T) {
+                       alias=FALSE) {
 
   # check genelist
   if(!is.vector(genelist))
@@ -28,7 +28,6 @@ id_convert <- function(genelist=NULL,
   if(!(fromType %in% c("ensembl_gene_id", "symbol", "entrezgene")))
     stop("fromType is not one of ensembl_gene_id, symbol, entrezgene")
 
-  print(getwd())
   # check species parameter
   if(species %in% c("hs", "mm")) {
     if(species=="hs") {
@@ -45,28 +44,31 @@ id_convert <- function(genelist=NULL,
   }
 
   # alias to symbol
-  if(fromType=="symbol" & isTRUE(alias)) {
+  if(fromType=="symbol") {
+
     if(species=="hs") {
-      genelist$toSymbol <- stringr::str_to_upper(genelist$query)
+      genelist$symbol <- stringr::str_to_upper(genelist$query)
     } else{
-      genelist$toSymbol <- stringr::str_to_title(genelist$query)
+      genelist$symbol <- stringr::str_to_title(genelist$query)
     }
-    genelist$symbol <- limma::alias2SymbolUsingNCBI(genelist$toSymbol,
-                                             gene.info.file=ncbi_gene,
-                                             required.columns="Symbol") %>%
-      dplyr::pull()
-  #  print(genelist)
 
-    # find convert missing genes
-    genelist.miss <- dplyr::filter(genelist, is.na(symbol)) %>% dplyr::pull(query)
+    if(isTRUE(alias)) {
+      genelist$symbol <- limma::alias2SymbolUsingNCBI(genelist$symbol,
+                                                      gene.info.file=ncbi_gene,
+                                                      required.columns="Symbol") %>%
+        dplyr::pull()
+      #  print(genelist)
 
-    if(length(genelist.miss) > 0)
-      warning(paste0(paste(genelist.miss, collapse=", "), " : were not converted correctly with alias2Symbol"))
+      # find convert missing genes
+      genelist.miss <- dplyr::filter(genelist, is.na(symbol)) %>% dplyr::pull(query)
+
+      if(length(genelist.miss) > 0)
+        warning(paste0(paste(genelist.miss, collapse=", "), " : were not converted correctly with alias2Symbol"))
+    }
 
     # convert IDs
     re <- dplyr::filter(anno, !!as.name(fromType) %in% na.omit(genelist$symbol)) %>%
-      dplyr::left_join(genelist, ., by=c("symbol"="symbol")) %>%
-      dplyr::select(-toSymbol)
+      dplyr::left_join(genelist, ., by=c("symbol"="symbol"))
 
   } else {
     re <- dplyr::filter(anno, !!as.name(fromType) %in% na.omit(genelist$query)) %>%

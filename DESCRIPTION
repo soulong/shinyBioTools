@@ -26,9 +26,13 @@ Imports:
     readxl,
     rvest,
     xml2,
-    shinythemes
+    shinythemes,
+    shinyjqui,
+    highcharter
 Depends: 
     magrittr,
-    shiny
+    shiny,
+    ggplot2,
+    cowplot
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
