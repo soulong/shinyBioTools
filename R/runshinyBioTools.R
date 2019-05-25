@@ -22,10 +22,10 @@ runshinyBioTools <- function(port=5001) {
   shRNA_vector <- shinyBioTools::shRNA_vector
 
   # import module
-  source(system.file("module", "module_rtPCR.R", "shinyBioTools"))
-  source(system.file("module", "module_rtPCR_ui.R", "shinyBioTools"))
-  source(system.file("module", "module_shRNA.R", "shinyBioTools"))
-  source(system.file("module", "module_shRNA_ui.R", "shinyBioTools"))
+  source(system.file("module", "module_rtPCR.R", package="shinyBioTools"))
+  source(system.file("module", "module_rtPCR_ui.R", package="shinyBioTools"))
+  source(system.file("module", "module_shRNA.R", package="shinyBioTools"))
+  source(system.file("module", "module_shRNA_ui.R", package="shinyBioTools"))
   # source("./module/module_rtPCR.R")
   # source("./module/module_rtPCR_ui.R")
   # source("./module/module_shRNA.R")
