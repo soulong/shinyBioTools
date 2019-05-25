@@ -32,7 +32,6 @@ Imports:
 Depends: 
     magrittr,
     shiny,
-    ggplot2,
-    cowplot
+    ggplot2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
