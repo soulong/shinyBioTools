@@ -16,6 +16,9 @@ id_convert(genelist = NULL, fromType = "ensembl_gene_id",
 
 \item{alias}{if \emph{genelist} contains gene symbol alias (defalut is TRUE)}
 }
+\value{
+a dataframe inculding several gene ids
+}
 \description{
 convert given IDs (including alias) to specific IDs
 }

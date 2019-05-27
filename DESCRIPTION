@@ -27,8 +27,7 @@ Imports:
     rvest,
     xml2,
     shinythemes,
-    shinyjqui,
-    highcharter
+    shinyjqui
 Depends: 
     magrittr,
     shiny,

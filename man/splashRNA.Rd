@@ -13,6 +13,9 @@ splashRNA(id, n, anno)
 
 \item{anno}{names for each shRNA}
 }
+\value{
+a dataframe containing name and shRNA antisnese sequence
+}
 \description{
 search splashRNA for a single query
 }

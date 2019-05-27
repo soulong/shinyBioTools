@@ -12,6 +12,18 @@
 #'
 #' @param alias if *genelist* contains gene symbol alias (defalut is TRUE)
 #'
+#' @return a dataframe inculding several gene ids
+#'
+#' @import AnnotationHub
+#
+#' @import stringr
+#'
+#' @import limma
+#'
+#' @import tibble
+#'
+#' @import dplyr
+#'
 #' @export
 #'
 id_convert <- function(genelist=NULL,

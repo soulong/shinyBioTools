@@ -1,9 +1,17 @@
-
+#'
+#' @title start shinyBioTools
+#'
+#' @description  start shinyBioTools by initialize a shiny app
 #'
 #' @param port run app on localhost, define a port, default port is 5001
 #'
+#' @return a shiny web app
+#'
 #' @export
 #'
+#' @examples
+#' libray("shinyBioTools")
+#' runshinyBioTools(port=5001)
 runshinyBioTools <- function(port=5001) {
 
   appDir <- system.file("example", "app", package="shinyBioTools")
@@ -14,7 +22,7 @@ runshinyBioTools <- function(port=5001) {
 
   options(shiny.maxRequestSize=100*1024^2)
   options(stringsAsFactors=F)
-  options(error=traceback)
+ # options(error=traceback)
 
   # mirE shRNA vector
   # shRNA_vector <- Biostrings::readDNAStringSet("./data/pGIPZ-mirE-control.fa",  "fasta")[[1]]
@@ -26,10 +34,6 @@ runshinyBioTools <- function(port=5001) {
   source(system.file("module", "module_rtPCR_ui.R", package="shinyBioTools"))
   source(system.file("module", "module_shRNA.R", package="shinyBioTools"))
   source(system.file("module", "module_shRNA_ui.R", package="shinyBioTools"))
-  # source("./module/module_rtPCR.R")
-  # source("./module/module_rtPCR_ui.R")
-  # source("./module/module_shRNA.R")
-  # source("./module/module_shRNA_ui.R")
 
 
   # run APP

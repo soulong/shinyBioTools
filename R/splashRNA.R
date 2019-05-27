@@ -10,6 +10,15 @@
 #'
 #' @param anno names for each shRNA
 #'
+#' @importFrom httr POST add_headers
+#'
+#' @importFrom stringr str_c
+#'
+#' @importFrom xml2 read_html
+#'
+#' @return a dataframe containing name and shRNA antisnese sequence
+#'
+#' @export
 splashRNA <- function(id, n, anno) {
   entrezid <- stringr::str_c("> entrezID","\n",id)
   res <- httr::POST(url = "http://splashrna.mskcc.org/show_results",
