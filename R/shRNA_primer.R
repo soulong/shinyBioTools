@@ -1,4 +1,12 @@
 #'
+#' @title design primer
+#'
+#' @description design primer according to splashRNA result
+#'
+#' @param splashRNA splashRNA result
+#'
+#' @param vector vector fasta sequence
+#'
 #' @importFrom stringr str_c
 #'
 #' @importFrom Biostrings DNAString DNAStringSet reverseComplement
