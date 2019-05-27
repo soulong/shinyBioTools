@@ -3,6 +3,8 @@
 export(id_convert)
 export(rtPCR)
 export(runshinyBioTools)
+export(shRNA_primer)
+export(splashRNA)
 export(splashRNA_batch)
 import(AnnotationHub)
 import(dplyr)

@@ -4,6 +4,7 @@
 #' @importFrom Biostrings DNAString DNAStringSet reverseComplement
 #'
 #' @export
+#'
 shRNA_primer <- function(splashRNA, vector)
 {
   loop <- DNAString("TAGTGAAGCCACAGATGTA")
